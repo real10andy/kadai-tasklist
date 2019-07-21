@@ -57,6 +57,9 @@ class TasksController < ApplicationController
   
   def set_task
     @task=current_user.tasks.find_by(params[:id])
+    unless @task
+      redirect_to login_url
+    end
   end
   
   def task_params
